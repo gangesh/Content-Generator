@@ -406,8 +406,8 @@ class Demo_Generator extends WP_CLI_Command {
 			return new WP_Error( 'empty-body', __( "The response body is empty.", 'demo-gen' ) );
 		}
 
-		$image_found = preg_match_all( '/<meta itemprop="image"[^>]*content="([^"]*)"[^>]*>/', $body, $matches );
-		// $image_found = preg_match_all( '/<a class="js-download"[^>]*href="([^"]*)"[^>]*>/', $body, $matches );
+		//$image_found = preg_match_all( '/<meta itemprop="image"[^>]*content="([^"]*)"[^>]*>/', $body, $matches );
+		$image_found = preg_match_all( '/<a download="true" [^>]*href="([^"]*)"[^>]*>/', $body, $matches );
 		if ( $image_found && isset( $matches[1] ) && isset( $matches[1][0] ) ) {
 			return $matches[1][0];
 		}
